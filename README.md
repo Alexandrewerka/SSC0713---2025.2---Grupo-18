@@ -10,3 +10,5 @@ Para geração da interface visual, a biblioteca "raylib.h" foi utilizada.
 https://raysan5.itch.io/raylib
 
 <img width="1195" height="513" alt="image" src="https://github.com/user-attachments/assets/a10c4522-8d7a-41ea-a8ff-7d263138a5be" />
+
+Na interface, o usuário é apresentado uma partida aleatória de cada geração
