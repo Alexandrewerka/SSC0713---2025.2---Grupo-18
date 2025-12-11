@@ -7,3 +7,4 @@ O projeto, que vai pelo nome de "   ", consiste de um programa em C++ que simula
 O genoma de cada indivíduo consiste dos valores atribuídos à proximidade do centro, formação de cadeias de 2 pedras consecutivas, formação de cadeias de 3 pedras consecutivas, e bloqueio de cadeias do adversário. Movimentos que ganham a partida ou que permitem que o oponente ganhe a partida não possuem seus próprios parâmetros e são sempre priorizados. Ademais, é possível configurar o algoritmo para tomar suas decisões com profundidade de múltiplas rodadas. O treinamento, para fins de velocidade, ocorre em profundidade menor que as partidas contra humanos. 
 
 Para geração da interface visual, a biblioteca "raylib.h" foi utilizada.
+https://raysan5.itch.io/raylib
