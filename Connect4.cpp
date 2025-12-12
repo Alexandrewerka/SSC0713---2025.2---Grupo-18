@@ -300,8 +300,8 @@ Agent EvolveOneGeneration() {
             // Loop da partida de treino
             while (!over && moves < 30) {
                 int piece = (turn == 1) ? 1 : 2;
-                // Durante o treino, usamos Depth 2 fixo nesta versao para rapidez
-                int col = (turn == 1) ? population[i].minimax(b, 2, -9e9, 9e9, true, 1).first
+                // Durante o treino, usamos Depth 4 fixo nesta versao para rapidez
+                int col = (turn == 1) ? population[i].minimax(b, 4, -9e9, 9e9, true, 1).first
                     : population[oppIdx].minimax(b, 2, -9e9, 9e9, true, 2).first;
 
                 if (b.isValid(col)) {
