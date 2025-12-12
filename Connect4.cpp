@@ -364,7 +364,7 @@ void DrawMiniBoard(MiniMatch& m, int x, int y) {
 }
 
 int main() {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Connect 4 AI - Killer Edition V11");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Evolutionary Connect 4 - IAssassina V11");
     SetTargetFPS(60);
 
     AppState state = MENU;
@@ -400,7 +400,7 @@ int main() {
                 BeginDrawing();
                 ClearBackground(BG_COLOR);
                 DrawText("EVOLUTIONARY CONNECT 4", 300, 100, 40, WHITE);
-                DrawText("V11 - Killer Instinct (Ganhe Rapido)", 350, 150, 20, YEL_P2);
+                DrawText("V11 - IAssassina", 350, 150, 20, YEL_P2);
                 
                 DrawText("Escolha a Dificuldade:", 350, 250, 20, LIGHTGRAY);
                 // Mostra a opção selecionada
