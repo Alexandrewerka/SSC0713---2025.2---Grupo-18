@@ -50,7 +50,7 @@ O treinamento ocorre através de torneios.
 * **Visualização:** [Raylib](https://www.raylib.com/), utilizada para renderizar tanto o `GAMEPLAY` quanto o `BATCH_PLAYBACK` (replay dos treinos).
 * **Profundidade Adaptativa:** Para viabilizar o tempo de treino, as gerações evoluem com uma profundidade menor ("Depth 2" ou "4"). Na partida final contra o usuário, aumentamos a profundidade (até 9), permitindo que o AG utilize os pesos otimizados com uma capacidade de previsão muito maior.
 
-*Projeto desenvolvido por:
-Alexandre Bueno Zapaterra Filho, NºUSP 15746448 
-Alexandre Werka Vieira, NºUSP 15437029
-Lucas Iglesias Ribeiro Siqueira, NºUSP 15639549*
+## Projeto desenvolvido por:
+* *Alexandre Bueno Zapaterra Filho, NºUSP 15746448*
+* *Alexandre Werka Vieira, NºUSP 15437029*
+* *Lucas Iglesias Ribeiro Siqueira, NºUSP 15639549*
