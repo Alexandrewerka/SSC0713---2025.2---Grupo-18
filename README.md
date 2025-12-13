@@ -1,4 +1,5 @@
-# Connect 4 Evolutivo - Sistemas Evolutivos Aplicados à Robótica - Grupo 18
+# Connect 4 Evolutivo - Sistemas Evolutivos Aplicados à Robótica
+Projeto final do Grupo 18 para a disciplina SSC0713 - Sistemas Evolutivos Aplicados à Robótica, ministrada pelo Prof. Dr. Eduardo do Valle Simões na Universidade de São Paulo (USP).
 
 ### Vídeo de Apresentação do Projeto: 
 https://drive.google.com/file/d/1whdOt2_Skn7THp_MxbgGqt5Rzq5wfNsh/view?usp=drive_link
