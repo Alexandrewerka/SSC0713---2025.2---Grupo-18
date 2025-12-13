@@ -1,5 +1,5 @@
 # SSC0713---2025.2---Grupo-18
-Projeto para a disciplina SSC0713 - Sistemas Evolutivos Aplicados à Robótica
+**Projeto para a disciplina SSC0713 - Sistemas Evolutivos Aplicados à Robótica**
 
 Apresentção do projeto: https://drive.google.com/file/d/1whdOt2_Skn7THp_MxbgGqt5Rzq5wfNsh/view?usp=drive_link
 
@@ -15,40 +15,37 @@ https://raysan5.itch.io/raylib
 
 Na interface, o usuário é apresentado uma partida aleatória de cada geração durante o período de teste, e é inceremoniosamente e violentamente depositado em uma partida contra o melhor indivíduo encontrado, onde poderá jogar repetidamente contra o modelo treinado até desistir (ou talvez vencer, mas ainda não conseguimos isso).
 
-Nosso objetivo neste projeto foi desenvolver um sistema capaz de aprender a jogar Connect 4 utilizando computação evolutiva. Abaixo, detalhamos a estrutura do código e as principais dificuldades que encontramos e resolvemos durante o desenvolvimento.
+**Implementação e Aprendizados**
 
-1. Estrutura do Agente e Genoma
-Em vez de utilizar redes neurais complexas, optamos por uma abordagem direta onde o AG otimiza os pesos de uma função heurística. Definimos o Agent com um genoma composto por apenas 4 genes (pesos), que representam características estratégicas do jogo:
+Abaixo, detalhamos a estrutura do código, as estratégias adotadas e as principais dificuldades que encontramos (e resolvemos) durante o desenvolvimento.
 
-Controle de Centro: Peso dado para peças na coluna central.
+### 1. Estrutura do Agente e Genoma
+Em vez de utilizar redes neurais complexas, optamos por uma abordagem direta onde o AG otimiza os pesos de uma função heurística. Definimos o `Agent` com um **genoma composto por apenas 4 genes (pesos)**, que representam características estratégicas do jogo:
 
-Sequência de 2: Peso para alinhar duas peças.
+1.  **Controle de Centro:** Peso dado para peças na coluna central.
+2.  **Sequência de 2:** Peso para alinhar duas peças.
+3.  **Sequência de 3:** Peso para alinhar três peças (preparação para vitória).
+4.  **Bloqueio:** Peso negativo (punição) caso o oponente tenha uma sequência de três peças não bloqueada.
 
-Sequência de 3: Peso para alinhar três peças (preparação para vitória).
+**Otimização de estratégia:** Durante os testes iniciais, notamos que o agente jogava muito nas bordas e perdia rapidamente. Observamos que no Connect 4, estatisticamente, **quem controla a coluna do meio tem mais chances de vitória**. Com base nisso, alteramos a ordem de varredura do tabuleiro no código (`getOptimizedMoves`), forçando o algoritmo a priorizar a análise do centro antes das bordas. Isso melhorou significativamente o desempenho e a velocidade da poda Alpha-Beta.
 
-Bloqueio: Peso negativo (punição) caso o oponente tenha uma sequência de três peças não bloqueada.
+### 2. Minimax e Otimizações (V11)
+Os pesos do genoma são utilizados por um algoritmo **Minimax com Poda Alpha-Beta** para decidir a jogada. A poda é fundamental para descartar ramos da árvore de decisão que não precisam ser calculados, melhorando a performance.
 
-Otimização de estratégia: Durante os testes iniciais, notamos que o agente jogava muito nas bordas e perdia rapidamente. Observamos que no Connect 4, estatisticamente, quem controla a coluna do meio tem mais chances de vitória. Com base nisso, alteramos a ordem de varredura do tabuleiro no código (getOptimizedMoves), forçando o algoritmo a priorizar a análise do centro antes das bordas. Isso melhorou significativamente o desempenho e a velocidade da poda Alpha-Beta.
+Tivemos uma dificuldade onde o AG, mesmo "ganhando", às vezes ignorava uma vitória imediata ou deixava passar um bloqueio óbvio porque a profundidade da busca o fazia focar em um ganho futuro incerto.
+Para corrigir isso, implementamos uma verificação de **Vitória/Derrota Imediata** antes da recursão do Minimax. Se o agente pode ganhar na próxima jogada, ele joga imediatamente. Se vai perder, ele bloqueia. Isso tornou o comportamento do AG muito mais consistente e agressivo.
 
-2. Minimax e Otimizações (V11)
-Os pesos do genoma são utilizados por um algoritmo Minimax com Poda Alpha-Beta para decidir a jogada. A poda é fundamental para descartar ramos da árvore de decisão que não precisam ser calculados, melhorando a performance.
-
-Tivemos uma dificuldade onde o AG, mesmo "ganhando", às vezes ignorava uma vitória imediata ou deixava passar um bloqueio óbvio porque a profundidade da busca o fazia focar em um ganho futuro incerto. Para corrigir isso, implementamos uma verificação de Vitória/Derrota Imediata antes da recursão do Minimax. Se o agente pode ganhar na próxima jogada, ele joga imediatamente. Se vai perder, ele bloqueia. Isso tornou o comportamento do AG muito mais consistente.
-
-3. O Processo Evolutivo
+### 3. O Processo Evolutivo
 O treinamento ocorre através de torneios.
 
-População: 50 agentes gerados com pesos aleatórios.
+* **População:** 50 agentes gerados com pesos aleatórios.
+* **Fitness:** Calculado com base em 3 partidas por indivíduo. Vitória soma pontos (+20), derrota subtrai (-20).
+* **Seleção por Elitismo:** Optamos por manter os **Top 6** indivíduos de cada geração inalterados. Percebemos que, sem o elitismo, o crossover acabava "diluindo" boas estratégias encontradas, fazendo o AG regredir em alguns momentos.
+* **Mutação:** Aplicamos uma taxa de 20% para variar levemente os pesos e evitar ótimos locais.
 
-Fitness: Calculado com base em 3 partidas por indivíduo. Vitória soma pontos, derrota subtrai.
+### 4. Stack Tecnológica e Performance
+* **Linguagem:** C++, escolhido pela necessidade de velocidade nos cálculos recursivos do Minimax.
+* **Visualização:** [Raylib](https://www.raylib.com/), utilizada para renderizar tanto o `GAMEPLAY` quanto o `BATCH_PLAYBACK` (replay dos treinos).
+* **Profundidade Adaptativa:** Para viabilizar o tempo de treino, as gerações evoluem com uma profundidade menor ("Depth 2" ou "4"). Na partida final contra o usuário, aumentamos a profundidade (até 9), permitindo que o AG utilize os pesos otimizados com uma capacidade de previsão muito maior.
 
-Seleção por Elitismo: Optamos por manter os Top 6 indivíduos de cada geração inalterados. Percebemos que, sem o elitismo, o crossover acabava "diluindo" boas estratégias encontradas, fazendo o AG regredir em alguns momentos.
-
-Mutação: Aplicamos uma taxa de 20% para variar levemente os pesos e evitar ótimos locais.
-
-4. Stack Tecnológica e Performance
-Linguagem: C++, escolhido pela necessidade de velocidade nos cálculos recursivos do Minimax.
-
-Visualização: Raylib, utilizada para renderizar tanto o GAMEPLAY quanto o BATCH_PLAYBACK (replay dos treinos).
-
-Profundidade Adaptativa: Para viabilizar o tempo de treino, as gerações evoluem com uma profundidade menor ("Depth 2" ou "4"). Na partida final contra o usuário, aumentamos a profundidade (até 9), permitindo que o AG utilize os pesos otimizados com uma capacidade de previsão muito maior.
+*Projeto desenvolvido por Alexandre Bueno Zapaterra Filho, Alexandre Werka Vieira e Lucas Iglesias Ribeiro Siqueira*
