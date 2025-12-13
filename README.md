@@ -1,8 +1,9 @@
 # Connect 4 Evolutivo - Sistemas Evolutivos Aplicados à Robótica - Grupo 18
 
-### Apresentção do projeto: 
+### Vídeo de Apresentação do Projeto: 
 https://drive.google.com/file/d/1whdOt2_Skn7THp_MxbgGqt5Rzq5wfNsh/view?usp=drive_link
 
+# Sobre o Projeto
 O projeto, que vai pelo nome de "Connect 4 Evolutivo", consiste de um programa em C++ que simula o jogo "Connect Four", no qual dois jogadores alternam entre si para depositar pedras em um grid afetado pela gravidade, buscando ligar quatro pedras suas consecutivas, treinando um algoritmo evolutivo simples (neste caso, cada indivíduo possui apenas 4 características, utilizadas para definir uma pontuação para cada movimento possível em uma dada rodada) por meio de torneios simples (atribuindo uma pontuação positiva no valor de fitness para cada vitória e uma penalidade para cada derrota) e seleção por elitismo (entende-se a possibilidade alta de overfitting que tal método gera, mas até o momento testes apresentaram resultados favoráveis contra jogadores humanos).
 
 
@@ -15,7 +16,7 @@ https://raysan5.itch.io/raylib
 
 Na interface, o usuário é apresentado uma partida aleatória de cada geração durante o período de teste, e é inceremoniosamente e violentamente depositado em uma partida contra o melhor indivíduo encontrado, onde poderá jogar repetidamente contra o modelo treinado até desistir (ou talvez vencer, mas ainda não conseguimos isso).
 
-**Implementação e Aprendizados**
+# Implementação e Aprendizados
 
 Abaixo, detalhamos a estrutura do código, as estratégias adotadas e as principais dificuldades que encontramos (e resolvemos) durante o desenvolvimento.
 
