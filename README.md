@@ -1,5 +1,6 @@
 # SSC0713---2025.2---Grupo-18
-### **Projeto para a disciplina SSC0713 - Sistemas Evolutivos Aplicados à Robótica**
+
+# Connect 4 Evolutivo - Sistemas Evolutivos Aplicados à Robótica**
 
 Apresentção do projeto: https://drive.google.com/file/d/1whdOt2_Skn7THp_MxbgGqt5Rzq5wfNsh/view?usp=drive_link
 
