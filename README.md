@@ -17,7 +17,7 @@ https://raysan5.itch.io/raylib
 
 Na interface, o usuário é apresentado uma partida aleatória de cada geração durante o período de teste, e é inceremoniosamente e violentamente depositado em uma partida contra o melhor indivíduo encontrado, onde poderá jogar repetidamente contra o modelo treinado até desistir (ou talvez vencer, mas ainda não conseguimos isso).
 
-# Implementação e Aprendizados
+## Implementação e Aprendizados
 
 Abaixo, detalhamos a estrutura do código, as estratégias adotadas e as principais dificuldades que encontramos (e resolvemos) durante o desenvolvimento.
 
