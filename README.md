@@ -54,6 +54,8 @@ O treinamento ocorre através de torneios.
 
 Para monitorar o aprendizado do algoritmo em tempo real, implementamos um sistema de plotagem gráfica dentro da interface. O gráfico abaixo ilustra a curva de convergência durante um treinamento típico de 50 gerações.
 
+*(Nota: A funcionalidade de visualização deste gráfico foi implementada após a apresentação final do projeto, apenas a título de curiosidade e análise visual, e portanto não está incluída no código-fonte principal disponibilizado neste repositório.)*
+
 <div align="center">
 <img width="800" alt="Gráfico de Convergência Evolutiva" src="https://github.com/user-attachments/assets/5b6e85b6-bb4d-4108-b5a5-b4c7ae6df7e1" />
 </div>
