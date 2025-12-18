@@ -50,6 +50,20 @@ O treinamento ocorre através de torneios.
 * **Visualização:** [Raylib](https://www.raylib.com/), utilizada para renderizar tanto o `GAMEPLAY` quanto o `BATCH_PLAYBACK` (replay dos treinos).
 * **Profundidade Adaptativa:** Para viabilizar o tempo de treino, as gerações evoluem com uma profundidade menor ("Depth 2" ou "4"). Na partida final contra o usuário, aumentamos a profundidade (até 9), permitindo que o AG utilize os pesos otimizados com uma capacidade de previsão muito maior.
 
+## Resultados e Análise da Evolução
+
+Para monitorar o aprendizado do algoritmo em tempo real, implementamos um sistema de plotagem gráfica dentro da interface. O gráfico abaixo ilustra a curva de convergência durante um treinamento típico de 50 gerações.
+
+<img width="1195" height="513" alt="image" src="https://github.com/user-attachments/assets/a10c4522-8d7a-41ea-a8ff-7d263138a5be" />
+
+**Interpretação dos Dados:**
+
+* **Linha Verde (Best):** Representa o fitness do melhor indivíduo de cada geração. O gráfico demonstra uma rápida convergência para o teto de pontuação (aprox. 60 pontos), o que indica que o campeão vence consistentemente suas 3 partidas de torneio.
+* **Linha Amarela (Avg):** Representa a média de fitness da população. Ela permanece próxima de zero, o que é esperado estatisticamente em um sistema de torneio fechado (soma zero), onde para cada agente que ganha pontos (+20), outro é penalizado na mesma proporção (-20).
+
+**Observação sobre Robustez:**
+É possível notar pequenas quedas ("vales") na linha verde em determinados momentos. Isso ocorre quando mutações ou pareamentos desfavoráveis afetam momentaneamente o desempenho. No entanto, o gráfico evidencia a eficácia do método de **Seleção por Elitismo**: a recuperação é imediata na geração seguinte, garantindo que as melhores estratégias (pesos otimizados) sejam preservadas e o AG não regrida.
+
 ## Projeto desenvolvido por:
 * *Alexandre Bueno Zapaterra Filho, NºUSP 15746448*
 * *Alexandre Werka Vieira, NºUSP 15437029*
